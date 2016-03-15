@@ -38,6 +38,8 @@ L.Map.Drag = L.Handler.extend({
 		}
 		L.DomUtil.addClass(this._map._container, 'leaflet-grab');
 		this._draggable.enable();
+		this._positions = [];
+		this._times = [];
 	},
 
 	removeHooks: function () {
@@ -77,10 +79,6 @@ L.Map.Drag = L.Handler.extend({
 		    .fire('movestart')
 		    .fire('dragstart');
 
-		if (map.options.inertia) {
-			this._positions = [];
-			this._times = [];
-		}
 	},
 
 	_onDrag: function (e) {
